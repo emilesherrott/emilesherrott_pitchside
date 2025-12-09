@@ -265,7 +265,6 @@ img {
   outline: none;
 }
 
-
 /* --- RESPONSIVE --- */
 @media (max-width: 900px) {
   .hero-overlay h1 {
@@ -285,8 +284,15 @@ img {
   }
 }
 @media (max-width: 700px) {
+  /* .menu-toggle {
+    display: block;
+  } */
   .menu-toggle {
     display: block;
+    position: fixed;
+    top: 12px; /* optional: bring it slightly closer to top */
+    left: 12px;
+    z-index: 999; /* higher than hero overlay */
   }
   .side-menu {
     position: fixed;
@@ -309,13 +315,16 @@ img {
   .hero {
     height: 60vh;
   }
-  .hero-overlay {
+  /* .hero-overlay {
     position: relative;
     bottom: auto;
     left: 0;
     padding: 10px 18px;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.55), transparent);
     border-radius: 0;
+  } */
+     .hero-overlay {
+    z-index: 10;     /* lower than menu toggle */
   }
   .hero-overlay h1 {
     font-size: 28px;
