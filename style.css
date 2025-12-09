@@ -288,11 +288,10 @@ img {
     display: block;
   } */
   .menu-toggle {
-    display: block;
     position: fixed;
-    top: 12px; /* optional: bring it slightly closer to top */
+    top: 12px;       /* always at top of screen */
     left: 12px;
-    z-index: 999; /* higher than hero overlay */
+    z-index: 200;    /* above everything */
   }
   .side-menu {
     position: fixed;
@@ -323,8 +322,8 @@ img {
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.55), transparent);
     border-radius: 0;
   } */
-     .hero-overlay {
-    z-index: 10;     /* lower than menu toggle */
+  .hero-overlay {
+    margin-top: 0;   /* no extra spacing that pushes the toggle down */
   }
   .hero-overlay h1 {
     font-size: 28px;
