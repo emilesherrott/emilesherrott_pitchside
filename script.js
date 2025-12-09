@@ -113,7 +113,7 @@
 // SCROLL BEHAVIOR - HIDE MENU EARLY WHEN HERO H1 IS REACHED
 let heroH1 = heroOverlay.querySelector('h1');
 const sideMenuHeight = sideMenu.offsetHeight || 0;
-let triggerOffset = heroH1 ? heroH1.getBoundingClientRect().top + window.scrollY - sideMenuHeight - 20 : hero.offsetHeight - 80;
+let triggerOffset = heroH1 ? heroH1.getBoundingClientRect().top + window.scrollY - sideMenuHeight - 40 : hero.offsetHeight - 80;
 
 function onScroll() {
   const scrolled = window.scrollY > triggerOffset;
