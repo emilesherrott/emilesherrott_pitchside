@@ -20,7 +20,9 @@
     heroOverlayDiv.style.zIndex = '2';
     heroOverlayDiv.style.cursor = 'pointer';
     heroOverlayDiv.addEventListener('contextmenu', e => e.preventDefault());
-    heroOverlayDiv.addEventListener('touchstart', e => e.preventDefault());
+    heroOverlayDiv.addEventListener('touchstart', e => {
+      if (e.touches.length > 1) e.preventDefault();
+    });
     hero.appendChild(heroOverlayDiv);
   }
 
@@ -53,7 +55,10 @@
       overlay.style.cursor = 'pointer';
       overlay.style.background = 'transparent';
       overlay.addEventListener('contextmenu', e => e.preventDefault());
-      overlay.addEventListener('touchstart', e => e.preventDefault());
+      overlay.addEventListener('touchstart', e => {
+        // only block multi-touch gestures; allow single-finger scroll
+        if (e.touches.length > 1) e.preventDefault();
+      });
       overlay.addEventListener('click', () => openLightbox(img.src, img.alt));
 
       imgWrapper.appendChild(img);
@@ -86,7 +91,9 @@
     lightboxOverlay.style.cursor = 'pointer';
     lightboxOverlay.addEventListener('click', () => closeLightbox());
     lightboxOverlay.addEventListener('contextmenu', e => e.preventDefault());
-    lightboxOverlay.addEventListener('touchstart', e => e.preventDefault());
+    lightboxOverlay.addEventListener('touchstart', e => {
+      if (e.touches.length > 1) e.preventDefault();
+    });
     lightbox.appendChild(lightboxOverlay);
   }
 
@@ -110,26 +117,24 @@
   });
 
   // SCROLL BEHAVIOR - HIDE MENU EARLY WHEN HERO H1 IS REACHED
-// SCROLL BEHAVIOR - HIDE MENU EARLY WHEN HERO H1 IS REACHED
-let heroH1 = heroOverlay.querySelector('h1');
-const sideMenuHeight = sideMenu.offsetHeight || 0;
-let triggerOffset = heroH1 ? heroH1.getBoundingClientRect().top + window.scrollY - sideMenuHeight - 40 : hero.offsetHeight - 80;
+  let heroH1 = heroOverlay.querySelector('h1');
+  const sideMenuHeight = sideMenu.offsetHeight || 0;
+  let triggerOffset = heroH1 ? heroH1.getBoundingClientRect().top + window.scrollY - sideMenuHeight - 40 : hero.offsetHeight - 80;
 
-function onScroll() {
-  const scrolled = window.scrollY > triggerOffset;
-  if (scrolled) sideMenu.classList.add('hidden'); 
-  else sideMenu.classList.remove('hidden');
+  function onScroll() {
+    const scrolled = window.scrollY > triggerOffset;
+    if (scrolled) sideMenu.classList.add('hidden');
+    else sideMenu.classList.remove('hidden');
 
-  if (scrolled) heroOverlay.classList.add('scrolled'); 
-  else heroOverlay.classList.remove('scrolled');
-}
+    if (scrolled) heroOverlay.classList.add('scrolled');
+    else heroOverlay.classList.remove('scrolled');
+  }
 
-window.addEventListener('scroll', onScroll, { passive: true });
-window.addEventListener('resize', () => {
-  heroH1 = heroOverlay.querySelector('h1');
-  triggerOffset = heroH1 ? heroH1.getBoundingClientRect().top + window.scrollY - sideMenuHeight - 20 : hero.offsetHeight - 80;
-});
-
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', () => {
+    heroH1 = heroOverlay.querySelector('h1');
+    triggerOffset = heroH1 ? heroH1.getBoundingClientRect().top + window.scrollY - sideMenuHeight - 20 : hero.offsetHeight - 80;
+  });
 
   // KEYBOARD HANDLING
   document.addEventListener('keydown', e => {
