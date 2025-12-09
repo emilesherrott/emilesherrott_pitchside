@@ -1,32 +1,39 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Emile Sherrott Pitchside</title>
     <link rel="icon" type="image/png" href="./photographs/favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="style.css" />
+
+    <!-- External CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Web font -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;700&display=swap" rel="stylesheet">
   </head>
   <body>
+    <!-- MOBILE MENU TOGGLE -->
+    <button class="menu-toggle" aria-label="Open menu" id="menu-toggle">☰</button>
+
     <!-- SIDE MENU -->
-    <nav class="side-menu">
+    <nav class="side-menu" id="side-menu" aria-label="Recent gallery">
       <h2>Recent Gallery</h2>
       <ul>
-        <li><a href="#match1">Crystal Palace Women<br />vs Birmingham City Women</a></li>
-        <li><a href="#match2">FC Condor 23<br />vs Inter Newbury</a></li>
+        <li><a href="#match1">Crystal Palace Women<br>vs Birmingham City Women</a></li>
+        <li><a href="#match2">FC Condor 23<br>vs Inter Newbury</a></li>
       </ul>
     </nav>
 
-    <div class="main-content">
+    <main class="main-content">
       <!-- HERO SECTION -->
-      <section class="hero">
-        <img src="./photographs/hero/20251207_CRYSTAL_PALCE_VS_BIRMINGHAM_CITY_2049.jpg" class="hero-img" />
-        <div class="hero-overlay">
+      <section class="hero" id="hero">
+        <img src="./photographs/hero/20251207_CRYSTAL_PALCE_VS_BIRMINGHAM_CITY_2049.jpg" class="hero-img" alt="Hero photo of match">
+        <div class="hero-overlay" id="hero-overlay">
           <h1>Emile Sherrott Pitchside</h1>
           <h2>Sports Photography – PLI up to £10 million / National League Licensed</h2>
           <div class="hero-links">
-            <a href="https://www.instagram.com/emilesherrott_pitchside/" target="_blank">Instagram</a>
+            <a href="https://www.instagram.com/emilesherrott_pitchside/" target="_blank" rel="noopener">Instagram</a>
             <a href="mailto:emilesherrott@gmail.com">Email</a>
           </div>
         </div>
@@ -36,22 +43,23 @@
       <section id="match1" class="match-section">
         <h2>Crystal Palace Women vs Birmingham City Women</h2>
         <p>07/12/25</p>
-        <div class="match-gallery"></div>
+        <div class="match-gallery" aria-label="Gallery for match 1"></div>
       </section>
 
       <section id="match2" class="match-section">
         <h2>FC Condor 23 vs Inter Newbury</h2>
         <p>06/12/25</p>
-        <div class="match-gallery"></div>
+        <div class="match-gallery" aria-label="Gallery for match 2"></div>
       </section>
-    </div>
+    </main>
 
     <!-- LIGHTBOX -->
-    <div class="lightbox" id="lightbox">
-      <span class="lightbox-close" id="lightbox-close">&times;</span>
-      <img class="lightbox-img" id="lightbox-img" src="" alt="Expanded photo" />
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
+      <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+      <img class="lightbox-img" id="lightbox-img" src="" alt="Expanded photo">
     </div>
 
+    <!-- External JS -->
     <script src="script.js"></script>
   </body>
 </html>
