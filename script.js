@@ -68,6 +68,8 @@
     try {
       const res = await fetch('https://api.emilesherrottpitchside.com/api/events');
       const events = await res.json();
+
+      console.log('hit', events)
       dynamicMatches = events.filter(ev => !['match1','match2','match3'].includes(ev.id));
     } catch (err) {
       console.error('Failed to load dynamic matches:', err);
